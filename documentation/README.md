@@ -62,3 +62,9 @@ Check the answers and update the score and results for each question.
 
 ### Feedback: 
 At the end, outputs correctness for each answer, the final score, and a performance message.
+
+## Screenshots
+![Start of Code](assets/screenshot1)
+![During the Quiz](assets/screenshot2)
+![End of Quiz](assets/screenshot3)
+
