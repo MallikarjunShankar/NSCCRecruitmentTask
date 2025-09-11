@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .separator {
+            border: none;
+            border-top: 2px solid #ddd;
+            margin: 20px 0;
+        }
+        .question {
+            margin-bottom: 25px;
+        }
+        .question h3 {
+            color: #555;
+            margin-bottom: 15px;
+        }
+        .options {
+            margin-left: 20px;
+        }
+        .options label {
+            display: block;
+            margin-bottom: 8px;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 3px;
+            transition: background-color 0.2s;
+        }
+        .options label:hover {
+            background-color: #f0f0f0;
+        }
+        .options input[type="radio"] {
+            margin-right: 10px;
+        }
+        .submit-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 20px 0;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+        .results {
+            display: none;
+            text-align: center;
+        }
+        .score {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin: 20px 0;
+        }
+        .feedback {
+            text-align: left;
+            margin: 20px 0;
+        }
+        .feedback div {
+            margin-bottom: 8px;
+            padding: 5px;
+            border-radius: 3px;
+        }
+        .correct {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .final-message {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .excellent { color: #28a745; }
+        .good { color: #007bff; }
+        .better-luck { color: #dc3545; }
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Quiz!</h1>
+        <hr class="separator">
+        
+        <form id="quizForm">
+            <div class="question">
+                <h3>Question 1: What is the capital of France?</h3>
+                <div class="options">
+                    <label><input type="radio" name="q1" value="1"> 1. Berlin</label>
+                    <label><input type="radio" name="q1" value="2"> 2. Madrid</label>
+                    <label><input type="radio" name="q1" value="3"> 3. Paris</label>
+                    <label><input type="radio" name="q1" value="4"> 4. Rome</label>
+                </div>
+                <div id="error1" class="error"></div>
+            </div>
+            
+            <hr class="separator">
+            
+            <div class="question">
+                <h3>Question 2: What is 2 + 2?</h3>
+                <div class="options">
+                    <label><input type="radio" name="q2" value="1"> 1. 3</label>
+                    <label><input type="radio" name="q2" value="2"> 2. 4</label>
+                    <label><input type="radio" name="q2" value="3"> 3. 5</label>
+                    <label><input type="radio" name="q2" value="4"> 4. 6</label>
+                </div>
+                <div id="error2" class="error"></div>
+            </div>
+            
+            <hr class="separator">
+            
+            <div class="question">
+                <h3>Question 3: What is the largest planet in our solar system?</h3>
+                <div class="options">
+                    <label><input type="radio" name="q3" value="1"> 1. Earth</label>
+                    <label><input type="radio" name="q3" value="2"> 2. Jupiter</label>
+                    <label><input type="radio" name="q3" value="3"> 3. Mars</label>
+                    <label><input type="radio" name="q3" value="4"> 4. Saturn</label>
+                </div>
+                <div id="error3" class="error"></div>
+            </div>
+            
+            <hr class="separator">
+            
+            <div class="question">
+                <h3>Question 4: Who wrote 'Hamlet'?</h3>
+                <div class="options">
+                    <label><input type="radio" name="q4" value="1"> 1. Charles Dickens</label>
+                    <label><input type="radio" name="q4" value="2"> 2. Mark Twain</label>
+                    <label><input type="radio" name="q4" value="3"> 3. William Shakespeare</label>
+                    <label><input type="radio" name="q4" value="4"> 4. Jane Austen</label>
+                </div>
+                <div id="error4" class="error"></div>
+            </div>
+            
+            <hr class="separator">
+            
+            <div class="question">
+                <h3>Question 5: When was the Constitution of India brought into force?</h3>
+                <div class="options">
+                    <label><input type="radio" name="q5" value="1"> 1. 1947</label>
+                    <label><input type="radio" name="q5" value="2"> 2. 1948</label>
+                    <label><input type="radio" name="q5" value="3"> 3. 1949</label>
+                    <label><input type="radio" name="q5" value="4"> 4. 1950</label>
+                </div>
+                <div id="error5" class="error"></div>
+            </div>
+            
+            <hr class="separator">
+            
+            <button type="submit" class="submit-btn">Submit Quiz</button>
+        </form>
+        
+        <div id="results" class="results">
+            <hr class="separator">
+            <div id="scoreDisplay" class="score"></div>
+            
+            <div id="feedback" class="feedback"></div>
+            
+            <hr class="separator">
+            
+            <div id="finalMessage" class="final-message"></div>
+            <p><strong>Thank you for participating in the quiz!</strong></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('quizForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Clear previous errors
+            for (let i = 1; i <= 5; i++) {
+                document.getElementById('error' + i).textContent = '';
+            }
+            
+            // Get form data
+            const formData = new FormData(this);
+            const answers = {};
+            let isValid = true;
+            
+            // Validate and collect answers (equivalent to do-while validation in C)
+            for (let i = 1; i <= 5; i++) {
+                const answer = formData.get('q' + i);
+                if (!answer) {
+                    document.getElementById('error' + i).textContent = 'Please select an answer!';
+                    isValid = false;
+                } else {
+                    answers['q' + i] = parseInt(answer);
+                }
+            }
+            
+            if (!isValid) {
+                return;
+            }
+            
+            // Calculate score (following C logic exactly)
+            let score = 0;
+            const correctAnswers = {q1: 3, q2: 2, q3: 2, q4: 3, q5: 4};
+            const resultStatus = {};
+            
+            for (let i = 1; i <= 5; i++) {
+                const qKey = 'q' + i;
+                if (answers[qKey] === correctAnswers[qKey]) {
+                    score++;
+                    resultStatus[qKey] = 1; // Correct
+                } else {
+                    resultStatus[qKey] = 0; // Incorrect
+                }
+            }
+            
+            // Display results
+            document.getElementById('scoreDisplay').textContent = `Your total score is: ${score} out of 5`;
+            
+            // Show individual question results
+            let feedbackHTML = '';
+            for (let i = 1; i <= 5; i++) {
+                const qKey = 'q' + i;
+                const status = resultStatus[qKey] === 1 ? 'Correct' : 'Incorrect';
+                const cssClass = resultStatus[qKey] === 1 ? 'correct' : 'incorrect';
+                feedbackHTML += `<div class="${cssClass}">Question ${i}: ${status}</div>`;
+            }
+            document.getElementById('feedback').innerHTML = feedbackHTML;
+            
+            // Final message (following C logic)
+            let finalMessage = '';
+            let messageClass = '';
+            if (score === 5) {
+                finalMessage = 'Excellent! You got all answers correct.';
+                messageClass = 'excellent';
+            } else if (score >= 3) {
+                finalMessage = 'Good job! You passed the quiz.';
+                messageClass = 'good';
+            } else {
+                finalMessage = 'Better luck next time.';
+                messageClass = 'better-luck';
+            }
+            
+            const finalMessageEl = document.getElementById('finalMessage');
+            finalMessageEl.textContent = finalMessage;
+            finalMessageEl.className = 'final-message ' + messageClass;
+            
+            // Hide form and show results
+            document.getElementById('quizForm').style.display = 'none';
+            document.getElementById('results').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
