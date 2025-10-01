@@ -4,7 +4,7 @@ int main(){
     int q1, q2, q3, q4, q5;
     printf("Welcome to the Quiz!\n");
     printf("------------------------------------------------------------\n");
-    printf("Question 1: What is the capital of France?\n");
+    printf("Question 1: What is the name of the capital of France?\n");
     printf("1. Berlin\n2. Madrid\n3. Paris\n4. Rome\n");
     do {
         printf("Enter your answer (1-4): ");
